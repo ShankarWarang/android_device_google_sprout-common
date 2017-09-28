@@ -429,7 +429,11 @@ on post-fs-data
 
     chmod 666 /dev/mali
     chown system graphics /dev/mali
-													
+
+    #BT SCO CVSD, for MT6582 CVSD codec on AP
+    chmod 0660 /dev/ebc
+    chown system media /dev/ebc
+
     #sbchk
     mkdir /data/sec 0750 system system
 
