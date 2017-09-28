@@ -1,7 +1,5 @@
-# LOCAL PATH
 LOCAL_PATH := device/google/sprout-common
 
-# ARCHITECTURE
 TARGET_BOARD_PLATFORM := mt6582
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -15,7 +13,7 @@ TARGET_ARCH_VARIANT_CPU := cortex-a7
 TARGET_CPU_VARIANT:= cortex-a7
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
-# Storage Allocations
+# Storage allocations
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00600000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 956964608
@@ -26,9 +24,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Kernel Stuff
+# kernel stuff
 TARGET_KERNEL_SOURCE := kernel/mediatek/sprout
-TARGET_KERNEL_CONFIG := lineageos_sprout_defconfig
+TARGET_KERNEL_CONFIG := sprout_defconfig
 BOARD_KERNEL_CMDLINE :=
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x00000100
 BOARD_KERNEL_BASE := 0x80000000
@@ -42,7 +40,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/root/fstab.sprout
 
-# TWRP Stuff
+# TWRP stuff
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
@@ -59,10 +57,6 @@ TW_NO_USB_STORAGE := true
 # OpenGL
 USE_OPENGL_RENDERER:= true
 
-# Cyanogen Hardware
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
-
 # WiFi
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -77,14 +71,11 @@ WIFI_DRIVER_FW_PATH_STA:=P2P
 # Enable Minikin text layout engine (will be the default soon)
 USE_MINIKIN := true
 
-# Use dmalloc() for low memory devices
 MALLOC_SVELTE := true
-
-# Device Resolution
 DEVICE_RESOLUTION := 480x854
 
 # Mediatek flags
-BOARD_USES_LEGACY_MTK_AV_BLOB := true
+#BOARD_USES_LEGACY_MTK_AV_BLOB := true
 BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
@@ -101,13 +92,9 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 WITH_DEXPREOPT := true
 DONT_DEXPREOPT_PREBUILTS := true
 
-# Use half res bootanimation to speed up first boot sequence
-TARGET_BOOTANIMATION_HALF_RES := true
-
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-# System Properties
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
 # Dual SIM
@@ -115,27 +102,16 @@ SIM_COUNT := 2
 TARGET_GLOBAL_CFLAGS += -DANDROID_MULTI_SIM
 TARGET_GLOBAL_CPPFLAGS += -DANDROID_MULTI_SIM
 
-# Custom RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
 
-# Neon Flags
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Camera
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 # BOARD_GLOBAL_CFLAGS += -DMETADATA_CAMERA_SOURCE
 USE_CAMERA_STUB := true
 
-# SELinux Policy
+# SELinux
 BOARD_SEPOLICY_DIRS += \
     device/google/sprout-common/sepolicy
-
-# Seccomp Policy
 BOARD_SECCOMP_POLICY += device/google/sprout-common/seccomp
-
-# PowerHAL
-TARGET_POWERHAL_VARIANT := mtk-xen0n
-TARGET_POWER_SET_FEATURE_LIB := power-feature-sprout
-
-
