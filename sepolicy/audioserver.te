@@ -1,19 +1,5 @@
-allow audioserver modem_prop:file { read open getattr };
-#allow audioserver sysfs:file { read open };
-allow audioserver ccci_device:chr_file { read write open ioctl };
-allow audioserver ebc_device:chr_file { read write open };
-allow audioserver wcn_combo_chip_prop:file { read open getattr };
-
-# nvram
-allow audioserver nvram_data_file:dir rw_dir_perms;
-allow audioserver nvram_data_file:file create_file_perms;
-allow audioserver nvram_data_file:lnk_file r_file_perms;
-
-# fm radio
-allow audioserver fm_device:chr_file rw_file_perms;
-
-# Audio
-allow audioserver sysfs:file { open read write };
-allow audioserver sysfs_devinfo:file { open read write };
-allow audioserver sysfs_ccci:file r_file_perms;
-allow audioserver sysfs_ccci:dir search;
+allow audioserver wcn_combo_chip_prop:file {read open getattr};
+allow audioserver ccci_device:chr_file {read write open ioctl};
+allow audioserver sysfs:file {read open};
+allow audioserver modem_prop:file {read open getattr};
+allow audioserver ebc_device:chr_file {read write open };
